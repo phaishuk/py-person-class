@@ -11,16 +11,15 @@ def create_person_list(people: list) -> list:
     instance_list = [
         Person(person["name"], person["age"]) for person in people
     ]
-    for man in people:
-        if "wife" in man and man["wife"] is not None:
+    for person in people:
+        if "wife" in person and person["wife"] is not None:
             for wife in people:
-                if man["wife"] == wife["name"]:
-                    Person.people[man["name"]].wife = \
+                if person["wife"] == wife["name"]:
+                    Person.people[person["name"]].wife = \
                         Person.people[wife["name"]]
-    for woman in people:
-        if "husband" in woman and woman["husband"] is not None:
+        if "husband" in person and person["husband"] is not None:
             for husband in people:
-                if woman["husband"] == husband["name"]:
-                    Person.people[woman["name"]].husband = \
+                if person["husband"] == husband["name"]:
+                    Person.people[person["name"]].husband = \
                         Person.people[husband["name"]]
     return instance_list
